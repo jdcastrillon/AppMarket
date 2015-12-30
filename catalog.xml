@@ -2,4 +2,6 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://192.168.10.200:8080/MercaSuper/MercaSuperWS?WSDL" uri="src/conf/xml-resources/web-service-references/MercaSuperWS/wsdl/192.168.10.200_8080/MercaSuper/MercaSuperWS.wsdl"/>
     <system systemId="http://192.168.10.200:8080/MercaSuper/MercaSuperWS?xsd=1" uri="src/conf/xml-resources/web-service-references/MercaSuperWS/wsdl/192.168.10.200_8080/MercaSuper/MercaSuperWS.xsd_1.xsd"/>
+    <system systemId="http://192.168.10.200:8080/MercaSuper/WebServiceSEGUNDO?WSDL" uri="src/conf/xml-resources/web-service-references/WebServiceSEGUNDO/wsdl/192.168.10.200_8080/MercaSuper/WebServiceSEGUNDO.wsdl"/>
+    <system systemId="http://192.168.10.200:8080/MercaSuper/WebServiceSEGUNDO?xsd=1" uri="src/conf/xml-resources/web-service-references/WebServiceSEGUNDO/wsdl/192.168.10.200_8080/MercaSuper/WebServiceSEGUNDO.xsd_1.xsd"/>
 </catalog>

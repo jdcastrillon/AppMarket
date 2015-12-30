@@ -26,21 +26,21 @@
             <isset property="conf.dir"/>
         </condition>
     </target>
-    <target name="wsimport-client-MercaSuperWS" depends="wsimport-init">
-        <mkdir dir="${build.generated.dir}/jax-wsCache/MercaSuperWS"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/MercaSuperWS" destdir="${build.generated.dir}/jax-wsCache/MercaSuperWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/MercaSuperWS/wsdl/192.168.10.200_8080/MercaSuper/MercaSuperWS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://192.168.10.200:8080/MercaSuper/MercaSuperWS?WSDL" xnocompile="true" xendorsed="true">
-            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/MercaSuperWS/wsdl/192.168.10.200_8080/MercaSuper/MercaSuperWS.wsdl"/>
-            <produces dir="${build.generated.dir}/jax-wsCache/MercaSuperWS"/>
+    <target name="wsimport-client-WebServiceSEGUNDO" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/WebServiceSEGUNDO"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WebServiceSEGUNDO" destdir="${build.generated.dir}/jax-wsCache/WebServiceSEGUNDO" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/WebServiceSEGUNDO/wsdl/192.168.10.200_8080/MercaSuper/WebServiceSEGUNDO.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://192.168.10.200:8080/MercaSuper/WebServiceSEGUNDO?WSDL" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/WebServiceSEGUNDO/wsdl/192.168.10.200_8080/MercaSuper/WebServiceSEGUNDO.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/WebServiceSEGUNDO"/>
         </wsimport>
         <copy todir="${build.generated.sources.dir}/jax-ws">
-            <fileset dir="${build.generated.dir}/jax-wsCache/MercaSuperWS">
+            <fileset dir="${build.generated.dir}/jax-wsCache/WebServiceSEGUNDO">
                 <include name="**/*.java"/>
             </fileset>
         </copy>
     </target>
-    <target name="wsimport-client-clean-MercaSuperWS" depends="-init-project">
+    <target name="wsimport-client-clean-WebServiceSEGUNDO" depends="-init-project">
         <delete dir="${build.generated.sources.dir}/jax-ws/cl/services/ws"/>
-        <delete dir="${build.generated.dir}/jax-wsCache/MercaSuperWS"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/WebServiceSEGUNDO"/>
     </target>
-    <target name="wsimport-client-generate" depends="wsimport-client-MercaSuperWS"/>
+    <target name="wsimport-client-generate" depends="wsimport-client-WebServiceSEGUNDO"/>
 </project>
