@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui"
+                template="/template.xhtml">
+    <ui:define name="titulo">
+        Mercar
+    </ui:define>
+
+    <ui:define name="cabecera">
+        <h1>Mercar</h1>
+    </ui:define>
+
+    <ui:define name="contenido">
+        <!-- Aquí van los items del admon-->
+
+        <center>
+            <h:form id="formu">
+                <p>Lista de productos</p><br/>
+                <h:panelGrid columns="1" cellpadding="1">                 
+                    <b:inputText placeholder="          Producto" tooltip="Ingrese Codigo Producto" value="#{beansProductos.codigoProducto}">
+                    </b:inputText>
+                </h:panelGrid>
+                <b:commandButton value="Cargar" look="primary" actionListener="#{beansProductos.pasarDatosCarrito()}"></b:commandButton>
+                <br/> <br/>
+                <b:dataTable value="#{beansProductos.carrito}" var="pro" id="bcarPool" styleClass="table table-striped table-bordered"
+                             style="width:100%">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nombre" />
+                        </f:facet>
+                        <h:outputText value="#{pro.nombre}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Valor" />
+                        </f:facet>
+                        <h:outputText value="#{pro.valor}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Und" />
+                        </f:facet>
+                        <h:outputText value="#{pro.cant}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="-" />
+                        </f:facet>
+                        <b:commandButton value="" ajax="true" update=":formu:amodal" look="inverse"  class="glyphicon glyphicon-pencil"
+                                         oncomplete="$('#amodal').modal('show')" actionListener="#{beansProductos.pasarDatos(pro)}"/>
+                    </h:column>
+                </b:dataTable>
+
+            </h:form>
+        </center>
+        <b:modal id="amodal" title="Producto" styleClass="modalPseudoClass" >
+            <center>
+                <h:form id="editar">
+                    <h:outputText value="#{beansProductos.miProducto.nombre}"></h:outputText><br/>
+                    <h:outputText value="#{beansProductos.miProducto.valor}"></h:outputText><br/>
+                    <h:outputText value="Cantidad"></h:outputText><br/>
+                    <b:inputText id="cant" value="#{beansProductos.miProducto.cant}"  style="width: 50px;"></b:inputText>
+                    <table>
+                        <tr><td><b:commandButton id="enviar" value="Ok" look="primary" onclick="#{beansProductos.actualizarCantidad()}" ></b:commandButton></td>
+                            <td><b:button value="close" dismiss="modal" onclick="return false;"/></td>
+                        </tr>
+                    </table>
+                </h:form>
+            </center>
+        </b:modal>
+
+    </ui:define>
+
+
+</ui:composition>

@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" >
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="#{request.contextPath}/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="#{request.contextPath}/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="#{request.contextPath}/css/animation.css" rel="stylesheet" type="text/css"/>
+
+        <title>
+            <ui:insert name="titulo">
+                AppMarket
+            </ui:insert>
+        </title>
+    </h:head>
+
+    <h:body>
+
+        <div id="navegacion">
+            <h:form>
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <!--<a class="navbar-brand" href="#{request.contextPath}/faces/view/index.xhtml">
+                                <img src="#{request.contextPath}/images/Construccion.png" class="img-responsive" style="width: 50%"/>
+                            </a>-->
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li class="active" id="home" name="home">
+                                    <h:commandLink action="inicio" class="a">
+                                        Inicio
+                                    </h:commandLink>
+                                </li>
+                                <li id="init" name="init">
+                                    <h:commandLink class="a" action="Acceder">
+                                        Quienes Somos
+                                    </h:commandLink></li>
+                                <li id="demo" name="demo">
+                                    <h:commandLink class="a" action="demo">
+                                        Convenios
+                                    </h:commandLink>
+                                </li>
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" 
+                                       role="button" aria-haspopup="true" 
+                                       aria-expanded="false">Utilidades
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li> 
+                                            <!-- <a href="#">eBR</a>-->
+                                            <h:commandLink class="a" >Mercar</h:commandLink>
+                                        </li>
+                                        <li>
+                                            <a href="#">Mis Mercados</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Ver Precios</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+            </h:form>
+
+            <article class="contenido">
+
+                <ui:insert name="contenido">
+
+                    Aqui va el contenido de la página
+                </ui:insert>
+            </article>
+           
+        </div>
+
+        <footer id="pie">
+            <div class="container" id="contacto">
+                <div class="row">
+                    <div class="col-lg-10 col-lg-offset-1 text-center">
+                        <!--<h4><img src="#{request.contextPath}" class="img-rounded hidden-xs" style="width: 10%"/></h4>-->
+                        <br/>
+                        <ul class="list-inline">
+                            <li><a href="https://www.facebook.com/QManager"><i class="fa fa-facebook fa-fw fa-3x"></i></a></li>
+                            <li><a href="https://twitter.com/qManagerTI"><i class="fa fa-twitter fa-fw fa-3x"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin fa-fw fa-3x"></i></a></li>
+                        </ul>
+                        <hr class="small"/>
+                        <!--<p class="text-muted">Powered By Unlimited Dreams <br/>Copyright &copy; Unlimited Dreams, Todos los derechos reservados.</p>-->
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="#{request.contextPath}/bower_components/jquery/dist/jquery.js"></script>
+        <script src="#{request.contextPath}/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="#{request.contextPath}/js/custom.js"></script>
+        <script>
+            $("li").click(function () {
+                $("li").removeClass("active");
+            });
+            $("li[name=home]").click(function () {
+                $("li[name=home]").addClass("active");
+            });
+            $("li[name=init]").click(function () {
+                $("li[name=init]").addClass("active");
+            });
+            $("li[name=contactUs]").click(function () {
+                $("li[name=contactUs]").addClass("active");
+            });
+        </script>
+    </h:body>
+
+</html>

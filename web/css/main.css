@@ -1,0 +1,42 @@
+/*
+Copyright (C) 2015 usuario
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+*/
+/* 
+    Created on : 19-nov-2015, 12:10:15
+    Author     : Miguel Lemos
+*/
+
+.redondeado{
+    position: fixed;
+    z-index: 2;
+    right: 10px;
+    top: 88%;
+    
+    border-radius: 300px 300px 300px 300px;
+    -moz-border-radius: 300px 300px 300px 300px;
+    -webkit-border-radius: 300px 300px 300px 300px; 
+    
+    -webkit-box-shadow: 5px 5px 25px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 25px -2px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 25px -2px rgba(0,0,0,0.75);
+}
+
+.oscurecer{
+    filter: brightness(0.6);
+    -moz-filter: brightness(0.3);
+}
+
