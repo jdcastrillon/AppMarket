@@ -45,12 +45,15 @@
                         </f:facet>
                         <h:outputText value="#{pro.cant}"/>
                     </h:column>
-                    <h:column>
+                    <h:column >
                         <f:facet name="header">
-                            <h:outputText value="-" />
+                            <h:outputText value="" class="glyphicon glyphicon-option-horizontal" />
                         </f:facet>
+                        
                         <b:commandButton value="" ajax="true" update=":formu:amodal" look="inverse"  class="glyphicon glyphicon-pencil"
                                          oncomplete="$('#amodal').modal('show')" actionListener="#{beansProductos.pasarDatos(pro)}"/>
+                        <b:commandButton value="" ajax="true"  look="inverse"  class="glyphicon glyphicon-remove"
+                                         actionListener="#{beansProductos.borrarDato(pro)}"/>
                     </h:column>
                 </b:dataTable>
 

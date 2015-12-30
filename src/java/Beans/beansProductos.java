@@ -29,9 +29,9 @@ import javax.xml.ws.WebServiceRef;
 @ManagedBean
 @SessionScoped
 public class beansProductos {
+
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/192.168.10.200_8080/MercaSuper/WebServiceSEGUNDO.wsdl")
     private WebServiceSEGUNDO_Service service;
-
 
     /**
      * Creates a new instance of Productos
@@ -61,31 +61,43 @@ public class beansProductos {
         System.out.println("Esta buscando " + codigoProducto);
         try {
             List<Productos> NomProducto = consultarProducto(codigoProducto);
-            System.out.println("-------------------------");
-            System.out.println("-- " + NomProducto.get(0));
             boolean Encontrado = false;
-        for (int i = 0; i < Carrito.size(); i++) {
-            if (Carrito.get(i).getCodigo() == Integer.parseInt(NomProducto.get(0).getCodigo())) {
-                Encontrado = true;
-                Carrito.get(i).setCant(Carrito.get(i).getCant() + 1);
-                break;
+            for (int i = 0; i < Carrito.size(); i++) {
+                if (Carrito.get(i).getCodigo() == Integer.parseInt(NomProducto.get(0).getCodigo())) {
+                    Encontrado = true;
+                    Carrito.get(i).setCant(Carrito.get(i).getCant() + 1);
+                    break;
+                }
             }
-        }
-        if (Encontrado == false) {
-            Productos temp=null;
-            temp=(Productos)NomProducto.get(0);
-            Carrito.add(new Producto(Integer.parseInt(temp.getCodigo()), temp.getNombre(), temp.getValor(), 1));
-        }
+            if (Encontrado == false) {
+                Productos temp = null;
+                temp = (Productos) NomProducto.get(0);
+                Carrito.add(new Producto(Integer.parseInt(temp.getCodigo()), temp.getNombre(), temp.getValor(), 1));
+            }
         } catch (Exception ex) {
             System.out.println("Error : " + ex.toString());
         }
-
-//        
     }
 
     public void pasarDatos(Producto pro) {
         MiProducto = (Producto) pro;
     }
+
+    public void borrarDato(Producto pro) throws IOException {
+        boolean borro=false;
+        for (int i = 0; i < Carrito.size(); i++) {
+            if (Carrito.get(i).getCodigo() == pro.getCodigo()) {
+                Carrito.remove(i);
+                borro=true;
+                break;
+            }
+        }
+        if (borro) {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("Mercar.xhtml");
+        }
+    }
+
+    
 
     public void actualizarCantidad() throws IOException {
         System.out.println("entro al metodo");
@@ -154,13 +166,11 @@ public class beansProductos {
 //        System.out.println("---");
 //        return null;
 //    }
-
     private java.util.List<cl.services.ws.Productos> consultarProducto(int codigo) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
         cl.services.ws.WebServiceSEGUNDO port = service.getWebServiceSEGUNDOPort();
         return port.consultarProducto(codigo);
     }
-    
 
 }
